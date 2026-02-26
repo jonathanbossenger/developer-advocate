@@ -1018,6 +1018,28 @@ a, .post-card, .role-card, .hero-links a, .highlight-card, .tag, .newsletter-btn
   padding-top: var(--wp--preset--spacing--70, 3rem);
 }
 
+/* ─── WP ADMIN BAR OFFSET ─── */
+.admin-bar .site-header {
+  top: 32px;
+}
+.admin-bar .site-nav.open {
+  top: 104px; /* 72px header + 32px admin bar */
+}
+.admin-bar .page-content-offset {
+  margin-top: 104px; /* 72px header + 32px admin bar */
+}
+@media screen and (max-width: 782px) {
+  .admin-bar .site-header {
+    top: 46px;
+  }
+  .admin-bar .site-nav.open {
+    top: 118px; /* 72px header + 46px admin bar */
+  }
+  .admin-bar .page-content-offset {
+    margin-top: 118px; /* 72px header + 46px admin bar */
+  }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
