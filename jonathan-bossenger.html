@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jonathan Bossenger — Developer Advocate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ─── LIGHT MODE (DEFAULT) ─── */
+  :root, [data-theme="light"] {
+    --bg: #FAFAF7;
+    --bg-elevated: #FFFFFF;
+    --bg-card: #F4F3EF;
+    --text: #1A1A1A;
+    --text-muted: #6B6D74;
+    --accent: #7B6AE0;
+    --accent-hover: #6A57D1;
+    --accent-dim: rgba(123, 106, 224, 0.1);
+    --accent-glow: rgba(123, 106, 224, 0.06);
+    --accent-text: #FFFFFF;
+    --secondary: #E8A838;
+    --secondary-dim: rgba(232, 168, 56, 0.1);
+    --border: rgba(0, 0, 0, 0.07);
+    --border-hover: rgba(0, 0, 0, 0.14);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.06);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.08);
+    --header-bg: rgba(250, 250, 247, 0.85);
+    --grain-opacity: 0.02;
+    --photo-gradient: rgba(250, 250, 247, 0.3);
+    --selection-bg: var(--accent);
+    --selection-text: #FFFFFF;
+    --icon-advocate: rgba(123, 106, 224, 0.1);
+    --icon-educator: rgba(232, 168, 56, 0.1);
+    --icon-builder: rgba(74, 180, 120, 0.1);
+    --tag-bg: rgba(0, 0, 0, 0.04);
+    --tag-border: rgba(0, 0, 0, 0.06);
+    --newsletter-bg: linear-gradient(135deg, rgba(123, 106, 224, 0.08) 0%, rgba(232, 168, 56, 0.06) 100%);
+    --newsletter-border: rgba(123, 106, 224, 0.12);
+    --timeline-gradient: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  }
+
+  /* ─── DARK MODE ─── */
+  [data-theme="dark"] {
+    --bg: #0C0F14;
+    --bg-elevated: #141821;
+    --bg-card: #1A1F2B;
+    --text: #E8E6E1;
+    --text-muted: #8B8E96;
+    --accent: #A594F9;
+    --accent-hover: #BEB0FF;
+    --accent-dim: rgba(165, 148, 249, 0.12);
+    --accent-glow: rgba(165, 148, 249, 0.06);
+    --accent-text: #0C0F14;
+    --secondary: #FFEE58;
+    --secondary-dim: rgba(255, 238, 88, 0.12);
+    --border: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.12);
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 20px rgba(0,0,0,0.3);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.4);
+    --header-bg: rgba(12, 15, 20, 0.85);
+    --grain-opacity: 0.03;
+    --photo-gradient: rgba(12, 15, 20, 0.4);
+    --selection-bg: var(--accent);
+    --selection-text: #0C0F14;
+    --icon-advocate: rgba(165, 148, 249, 0.12);
+    --icon-educator: rgba(255, 238, 88, 0.12);
+    --icon-builder: rgba(74, 222, 128, 0.12);
+    --tag-bg: rgba(255, 255, 255, 0.04);
+    --tag-border: rgba(255, 255, 255, 0.06);
+    --newsletter-bg: linear-gradient(135deg, rgba(165, 148, 249, 0.1) 0%, rgba(255, 238, 88, 0.06) 100%);
+    --newsletter-border: rgba(165, 148, 249, 0.15);
+    --timeline-gradient: linear-gradient(180deg, var(--accent) 0%, var(--border) 100%);
+  }
+
+  /* ─── SHARED CONSTANTS ─── */
+  :root {
+    --radius: 12px;
+    --radius-lg: 20px;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'Instrument Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-width: 1200px;
+    --transition: 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  ::selection {
+    background: var(--selection-bg);
+    color: var(--selection-text);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+  a:hover { color: var(--accent-hover); }
+
+  img { max-width: 100%; display: block; }
+
+  /* ─── GRAIN OVERLAY ─── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: var(--grain-opacity);
+  }
+
+  /* ─── SMOOTH THEME TRANSITIONS ─── */
+  *, *::before, *::after {
+    transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+  /* Exclude elements that have their own specific transitions */
+  a, .post-card, .role-card, .hero-links a, .highlight-card, .tag, .newsletter-btn, .post-read-more svg, .post-image img {
+    transition: all var(--transition);
+  }
+
+  /* ─── HEADER / NAV ─── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 2rem;
+    backdrop-filter: blur(20px);
+    background: var(--header-bg);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+
+  .site-logo {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .site-logo .dot {
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(123, 106, 224, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(123, 106, 224, 0); }
+  }
+  [data-theme="dark"] .dot {
+    animation-name: pulse-dark;
+  }
+  @keyframes pulse-dark {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(165, 148, 249, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(165, 148, 249, 0); }
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .site-nav { display: flex; align-items: center; gap: 0.25rem; }
+
+  .site-nav a {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    transition: all var(--transition);
+  }
+  .site-nav a:hover {
+    color: var(--text);
+    background: var(--tag-bg);
+  }
+  .site-nav a.active {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  /* ─── THEME TOGGLE ─── */
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg-elevated);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all var(--transition);
+    flex-shrink: 0;
+    margin-left: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .theme-toggle:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .theme-toggle .icon-sun {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.5);
+  }
+  .theme-toggle .icon-moon {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  [data-theme="dark"] .theme-toggle .icon-sun {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+  [data-theme="dark"] .theme-toggle .icon-moon {
+    opacity: 0;
+    transform: rotate(90deg) scale(0.5);
+  }
+
+  .mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--secondary-dim) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: var(--font-mono);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    animation: fadeInUp 0.6s ease-out both;
+  }
+
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    animation: fadeInUp 0.6s ease-out 0.1s both;
+  }
+
+  .hero h1 em {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    max-width: 540px;
+    margin-bottom: 2rem;
+    animation: fadeInUp 0.6s ease-out 0.2s both;
+  }
+
+  .hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    animation: fadeInUp 0.6s ease-out 0.3s both;
+  }
+
+  .hero-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-sm);
+  }
+  .hero-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+  .hero-links a svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .hero-links a.primary-link {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+    font-weight: 600;
+  }
+  .hero-links a.primary-link:hover {
+    background: var(--accent-hover);
+    color: var(--accent-text);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-dim);
+  }
+
+  /* Hero photo */
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease-out 0.15s both;
+  }
+
+  .hero-photo-frame {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    border: 2px solid var(--border);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .hero-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(15%) contrast(1.05);
+    transition: filter var(--transition);
+  }
+  .hero-photo-frame:hover img {
+    filter: grayscale(0%) contrast(1);
+  }
+
+  .hero-photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, var(--photo-gradient) 100%);
+    pointer-events: none;
+  }
+
+  .hero-photo-meta {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    z-index: 2;
+  }
+
+  .hero-photo-meta .location {
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SECTION STYLES ─── */
+  .section {
+    padding: 5rem 2rem;
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .section-label::before {
+    content: '—';
+    color: var(--accent);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  /* ─── WHAT I DO CARDS ─── */
+  .role-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .role-card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  .role-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .role-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+  .role-card:hover::before { opacity: 1; }
+
+  .role-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    font-size: 1.5rem;
+  }
+
+  .role-icon.advocate { background: var(--icon-advocate); }
+  .role-icon.educator { background: var(--icon-educator); }
+  .role-icon.builder { background: var(--icon-builder); }
+
+  .role-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .role-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ─── EXPERIENCE TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--timeline-gradient);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.5rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.5rem;
+    top: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+  }
+  .timeline-item.current::before {
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-dim);
+  }
+
+  .timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+  }
+
+  .timeline-role {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-company {
+    font-size: 0.9rem;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-desc {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  /* ─── LATEST POSTS ─── */
+  .posts-section { background: var(--bg-card); }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .post-card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    color: var(--text);
+  }
+  .post-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    color: var(--text);
+  }
+
+  .post-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .post-card:hover .post-image img {
+    transform: scale(1.04);
+  }
+
+  .post-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .post-date {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.6rem;
+  }
+
+  .post-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    line-height: 1.35;
+    margin-bottom: 0.75rem;
+    color: var(--text);
+    transition: color var(--transition);
+  }
+  .post-card:hover .post-title { color: var(--accent); }
+
+  .post-excerpt {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .post-read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 1rem;
+    font-family: var(--font-mono);
+  }
+  .post-read-more svg {
+    width: 14px;
+    height: 14px;
+    transition: transform var(--transition);
+  }
+  .post-card:hover .post-read-more svg { transform: translateX(3px); }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.7rem 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: all var(--transition);
+  }
+  .view-all-link:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  /* ─── SPEAKING & WRITING ─── */
+  .highlights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .highlight-card {
+    background: var(--bg-elevated);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition);
+  }
+  .highlight-card:hover {
+    border-color: var(--border-hover);
+    box-shadow: var(--shadow-md);
+  }
+
+  .highlight-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: var(--text-muted);
+    border: 1px solid var(--tag-border);
+    transition: all var(--transition);
+  }
+  .tag:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .writing-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .writing-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+  .writing-list li::before {
+    content: '↗';
+    color: var(--accent);
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+  .writing-list a {
+    color: var(--text);
+  }
+  .writing-list a:hover { color: var(--accent); }
+
+  /* ─── NEWSLETTER CTA ─── */
+  .newsletter-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .newsletter-card {
+    background: var(--newsletter-bg);
+    border-radius: var(--radius-lg);
+    padding: 3.5rem;
+    text-align: center;
+    border: 1px solid var(--newsletter-border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .newsletter-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, var(--accent-glow) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .newsletter-card h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .newsletter-card p {
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    position: relative;
+  }
+
+  .newsletter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--accent);
+    color: var(--accent-text);
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+    position: relative;
+  }
+  .newsletter-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px var(--accent-dim);
+    color: var(--accent-text);
+    background: var(--accent-hover);
+  }
+
+  /* ─── FOOTER ─── */
+  .site-footer {
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+  }
+  .footer-text a { color: var(--text-muted); }
+  .footer-text a:hover { color: var(--accent); }
+
+  .footer-social {
+    display: flex;
+    gap: 0.5rem;
+  }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: var(--text-muted);
+    transition: all var(--transition);
+  }
+  .footer-social a:hover {
+    color: var(--accent);
+    background: var(--accent-dim);
+  }
+  .footer-social svg { width: 18px; height: 18px; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero-photo { max-width: 320px; }
+    .role-grid { grid-template-columns: 1fr; }
+    .posts-grid { grid-template-columns: 1fr; }
+    .highlights-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 700px) {
+    .site-nav { display: none; }
+    .mobile-menu-btn { display: block; }
+    .site-nav.open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      background: var(--bg-elevated);
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero { padding: 6rem 1.5rem 3rem; min-height: auto; }
+    .section { padding: 3rem 1.5rem; }
+    .newsletter-card { padding: 2rem 1.5rem; }
+    .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .hero h1 { font-size: 2rem; }
+    .hero-links { flex-direction: column; }
+    .hero-links a { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="site-logo">
+      <span class="dot"></span>
+      jonathan bossenger
+    </a>
+    <div class="header-right">
+      <nav class="site-nav" id="siteNav">
+        <a href="#" class="active">Home</a>
+        <a href="#about">About</a>
+        <a href="#posts">Blog</a>
+        <a href="#experience">Experience</a>
+        <a href="/current-hardware/">Uses</a>
+        <a href="/guest-posts/">Writing</a>
+      </nav>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <button class="mobile-menu-btn" onclick="document.getElementById('siteNav').classList.toggle('open')" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Developer Advocate &middot; Automattic
+      </div>
+      <h1>Building for <em>developers</em>, teaching by <em>example.</em></h1>
+      <p class="hero-description">
+        I'm Jonathan — a developer advocate, educator, and open-source enthusiast from Cape Town, South Africa. I create educational content for WordPress developers and write about software, AI, and life.
+      </p>
+      <div class="hero-links">
+        <a href="/about/" class="primary-link">
+          About Me
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://github.com/jonathanbossenger">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://bsky.app/profile/jonathanbossenger.com">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.6 3.501 6.204 3.12-3.6.558-6.741 2.032-2.882 7.152C7.724 25.7 10.347 19.346 12 16.87c1.653 2.477 4.189 8.672 8.054 3.649 3.859-5.12.718-6.594-2.882-7.152 2.604.382 5.42-.493 6.204-3.12C23.622 9.419 24 4.457 24 3.768c0-.689-.139-1.861-.902-2.203-.659-.3-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+          Bluesky
+        </a>
+        <a href="https://www.youtube.com/@jon_bossenger">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+        <a href="https://www.linkedin.com/in/jonathanbossenger/">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="https://jonathanbossenger.com/wp-content/uploads/2024/09/2024-09-06-08.51.24-scaled.jpg" alt="Jonathan Bossenger" loading="eager">
+        <div class="hero-photo-meta">
+          <span class="location">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Cape Town, South Africa
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHAT I DO ─── -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">What I Do</div>
+      <h2 class="section-title">Developer advocacy through content, code &amp; community</h2>
+    </div>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon advocate">📡</div>
+        <h3>Developer Advocacy</h3>
+        <p>Working at Automattic across WordPress.com, WordPress VIP, and WordPress.org — bridging the gap between developers and the tools they use, with a growing focus on AI integration.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-icon educator">🎓</div>
+        <h3>Education & Content</h3>
+        <p>Creating tutorials, blog posts, video courses, and documentation that help developers learn WordPress development. Currently curating the Dev & Deploy newsletter.</p>
+      </div>
+      <div class="role-card">
+        <div class="role-icon builder">🛠</div>
+        <h3>Open Source & Tools</h3>
+        <p>Building developer utilities like WP Debug and SQLite Viewer for Studio. Active WordPress contributor, community deputy, and WordCamp speaker across multiple continents.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── LATEST POSTS ─── -->
+<section class="section posts-section" id="posts">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Latest Writing</div>
+      <h2 class="section-title">From the blog</h2>
+    </div>
+    <div class="posts-grid">
+      <a href="/2026/02/a-year-of-progress-ai-agentic-coding-and-the-cosmic-defender-experiment/" class="post-card">
+        <div class="post-image">
+          <img src="https://jonathanbossenger.com/wp-content/uploads/2026/02/pexels-photo-1329318.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="post-body">
+          <div class="post-date">Feb 20, 2026</div>
+          <h3 class="post-title">A year of progress: AI agentic coding and the Cosmic Defender experiment</h3>
+          <p class="post-excerpt">In March 2024 I tried to build a 3D space shooter game using AI in just a few prompts. A year later, I tried again — and it actually worked.</p>
+          <span class="post-read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="/2026/02/why-ive-settled-on-github-copilot-when-building-my-personal-projects/" class="post-card">
+        <div class="post-image">
+          <img src="https://jonathanbossenger.com/wp-content/uploads/2026/02/pexels-photo-2898316.jpeg" alt="" loading="lazy">
+        </div>
+        <div class="post-body">
+          <div class="post-date">Feb 11, 2026</div>
+          <h3 class="post-title">Why I've settled on GitHub Copilot for personal projects</h3>
+          <p class="post-excerpt">2025 was the year I tested every AI agent I could find and eventually settled back to using GitHub Copilot for building personal projects.</p>
+          <span class="post-read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+      <a href="/2026/01/four-wordpress-apps-i-built-with-ai-that-i-use-every-day/" class="post-card">
+        <div class="post-image">
+          <img src="https://jonathanbossenger.com/wp-content/uploads/2026/01/featured-image-The-WordPress-apps-Ive-been-building-with-AI.png" alt="" loading="lazy">
+        </div>
+        <div class="post-body">
+          <div class="post-date">Jan 27, 2026</div>
+          <h3 class="post-title">Four WordPress apps I built with AI that I use every day</h3>
+          <p class="post-excerpt">Here are four small, WordPress development-focused apps I built using AI. Each one scratches a specific itch.</p>
+          <span class="post-read-more">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </a>
+    </div>
+    <div style="text-align: center; margin-top: 2.5rem;">
+      <a href="/post-archive/" class="view-all-link">
+        View all posts
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERIENCE ─── -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Experience</div>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item current">
+        <div class="timeline-date">2022 — Present</div>
+        <div class="timeline-role">WordPress Developer Advocate</div>
+        <div class="timeline-company">Automattic</div>
+        <div class="timeline-desc">Started as a sponsored contributor supporting WordPress Training and Learn WordPress. Now part of the Developer Relations team, splitting time between WordPress.com, WordPress VIP, and WordPress.org, with a focus on AI.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2021 — 2022</div>
+        <div class="timeline-role">Senior Technical Writer</div>
+        <div class="timeline-company">Delicious Brains</div>
+        <div class="timeline-desc">Combined a love of writing with software development experience to create developer education content. The role evolved from Developer Educator to Senior Technical Writer.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2017 — 2020</div>
+        <div class="timeline-role">Development Lead</div>
+        <div class="timeline-company">Castos</div>
+        <div class="timeline-desc">Led development of a podcast hosting platform powering the Seriously Simple Podcasting plugin. Grew the team from 2 to 12, serving over 20,000 podcasters and 10,000+ customers.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">2016 — 2020</div>
+        <div class="timeline-role">Expert Developer</div>
+        <div class="timeline-company">Codeable</div>
+        <div class="timeline-desc">Solved technical problems for international clients, focusing on custom plugin development and theme customization.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SPEAKING & WRITING ─── -->
+<section class="section" style="background: var(--bg-card);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-label">Community</div>
+      <h2 class="section-title">Speaking &amp; writing</h2>
+    </div>
+    <div class="highlights-grid">
+      <div class="highlight-card">
+        <h3>🎤 Conference Talks</h3>
+        <div class="tag-list">
+          <span class="tag">WordCamp Europe '19 '23</span>
+          <span class="tag">WordCamp Cape Town '16 '18 '19 '24</span>
+          <span class="tag">WordCamp Johannesburg '18 '19</span>
+          <span class="tag">PHP South Africa '17</span>
+          <span class="tag">DevConf '22</span>
+          <span class="tag">DataConf '24</span>
+        </div>
+      </div>
+      <div class="highlight-card">
+        <h3>✍️ Published Writing</h3>
+        <ul class="writing-list">
+          <li><a href="https://wordpress.com/go/">WordPress.com Go Blog</a></li>
+          <li><a href="https://jetpack.com/">Jetpack Blog</a></li>
+          <li><a href="https://www.smashingmagazine.com/">Smashing Magazine</a></li>
+          <li><a href="https://wptavern.com/">WP Tavern</a></li>
+          <li><a href="/guest-posts/">View all guest posts →</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER CTA ─── -->
+<section class="section newsletter-section">
+  <div class="section-inner">
+    <div class="newsletter-card">
+      <h2>Dev &amp; Deploy Newsletter</h2>
+      <p>WordPress development news curated by me, delivered to your inbox weekly. Covering tools, tutorials, and the latest in the WordPress ecosystem.</p>
+      <a href="/2026/02/sign-up-for-my-wordpress-development-newsletter/" class="newsletter-btn">
+        Subscribe now
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-text">
+      &copy; 2026 Jonathan Bossenger &middot; Licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> &middot; Powered by <a href="https://wordpress.com">WordPress</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://github.com/jonathanbossenger" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+      <a href="https://bsky.app/profile/jonathanbossenger.com" aria-label="Bluesky">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 10.8c-1.087-2.114-4.046-6.053-6.798-7.995C2.566.944 1.561 1.266.902 1.565.139 1.908 0 3.08 0 3.768c0 .69.378 5.65.624 6.479.785 2.627 3.6 3.501 6.204 3.12-3.6.558-6.741 2.032-2.882 7.152C7.724 25.7 10.347 19.346 12 16.87c1.653 2.477 4.189 8.672 8.054 3.649 3.859-5.12.718-6.594-2.882-7.152 2.604.382 5.42-.493 6.204-3.12C23.622 9.419 24 4.457 24 3.768c0-.689-.139-1.861-.902-2.203-.659-.3-1.664-.62-4.3 1.24C16.046 4.748 13.087 8.687 12 10.8z"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@jon_bossenger" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/jonathanbossenger/" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://fosstodon.org/@jonathanbossenger" aria-label="Mastodon">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.268 5.313c-.35-2.578-2.617-4.61-5.304-5.004C17.51.242 15.792 0 11.813 0h-.03c-3.98 0-4.835.242-5.288.309C3.882.692 1.496 2.518.917 5.127.64 6.412.61 7.837.661 9.143c.074 1.874.088 3.745.26 5.611.118 1.24.325 2.47.62 3.68.55 2.237 2.777 4.098 4.96 4.857 2.336.792 4.849.923 7.256.38.265-.061.527-.132.786-.213.585-.184 1.27-.39 1.774-.753a.057.057 0 0 0 .023-.043v-1.809a.052.052 0 0 0-.02-.041.053.053 0 0 0-.046-.01 20.282 20.282 0 0 1-4.709.547c-2.73 0-3.463-1.284-3.674-1.818a5.593 5.593 0 0 1-.319-1.433.053.053 0 0 1 .066-.054 19.648 19.648 0 0 0 4.634.536c.565 0 1.13-.015 1.685-.057 2.444-.184 4.78-.58 5.038-4.27.01-.147.037-1.524.037-1.678 0-1.628.547-4.264-.553-5.986z"/><path d="M19.033 8.317v4.876h-1.932V8.468c0-1.02-.43-1.54-1.287-1.54-.949 0-1.424.616-1.424 1.834v2.59h-1.922v-2.59c0-1.218-.475-1.834-1.424-1.834-.857 0-1.287.52-1.287 1.54v4.725H7.825V8.317c0-1.02.26-1.832.782-2.434.538-.602 1.243-.91 2.12-.91 1.013 0 1.779.389 2.286 1.166l.493.826.493-.826c.507-.777 1.273-1.166 2.286-1.166.877 0 1.582.308 2.12.91.52.602.782 1.414.782 2.434z" fill="var(--bg-elevated)"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'light' ? 'dark' : 'light';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+
+  // Restore saved preference, default to light
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+    // Optionally respect system preference if no saved choice
+    else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // Uncomment the next line to auto-detect system dark mode:
+      // document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  })();
+</script>
+
+</body>
+</html>
