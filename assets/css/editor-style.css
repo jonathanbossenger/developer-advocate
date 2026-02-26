@@ -1,0 +1,35 @@
+/* Editor-specific overrides for the Jonathan Bossenger theme */
+
+:root {
+	--font-display: 'DM Serif Display', Georgia, serif;
+	--font-body: 'Instrument Sans', -apple-system, sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+	--accent: #7B6AE0;
+	--text-muted: #6B6D74;
+}
+
+.editor-styles-wrapper {
+	font-family: var(--font-body);
+	line-height: 1.7;
+}
+
+.editor-styles-wrapper h1,
+.editor-styles-wrapper h2,
+.editor-styles-wrapper h3,
+.editor-styles-wrapper h4,
+.editor-styles-wrapper h5,
+.editor-styles-wrapper h6 {
+	font-family: var(--font-display);
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.editor-styles-wrapper a {
+	color: var(--accent);
+	text-decoration: none;
+}
+
+.editor-styles-wrapper code,
+.editor-styles-wrapper pre {
+	font-family: var(--font-mono);
+}
