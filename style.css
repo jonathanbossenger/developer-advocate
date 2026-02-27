@@ -14,6 +14,11 @@ Text Domain: jonathan-bossenger
 Tags: full-site-editing, block-patterns, custom-colors, custom-logo
 */
 
+/* ─── navigation transitions ─── */
+@view-transition {
+    navigation: auto;
+}
+
 /* ─── LIGHT MODE (DEFAULT) ─── */
 :root, [data-theme="light"] {
   --bg: #FAFAF7;
