@@ -373,6 +373,7 @@ a, .role-card, .hero-links a, .highlight-card, .tag, .newsletter-btn .wp-element
   aspect-ratio: 3/4;
   border: 2px solid var(--border);
   box-shadow: var(--shadow-lg);
+  margin: 0;
 }
 
 .hero-photo-frame img {
