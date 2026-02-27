@@ -51,7 +51,7 @@
         <!-- /wp:heading -->
 
         <!-- wp:paragraph -->
-        <p>Creating tutorials, blog posts, video courses, and documentation that help developers learn WordPress development. Currently curating the Dev &amp; Deploy newsletter.</p>
+        <p>Creating tutorials, blog posts, video courses, and documentation that help developers learn WordPress development. Currently curating the WordPress.com Dev &amp; Deploy newsletter.</p>
         <!-- /wp:paragraph -->
       </div>
       <!-- /wp:column -->

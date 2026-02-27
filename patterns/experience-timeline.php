@@ -103,6 +103,26 @@
         <!-- /wp:paragraph -->
       </div>
       <!-- /wp:group -->
+
+        <!-- wp:group {"className":"timeline-item","layout":{"type":"default"}} -->
+        <div class="wp-block-group timeline-item">
+            <!-- wp:paragraph {"className":"timeline-date"} -->
+            <p class="timeline-date">2004 - 2016</p>
+            <!-- /wp:paragraph -->
+
+            <!-- wp:heading {"level":3,"className":"timeline-role"} -->
+            <h3 class="wp-block-heading timeline-role">PHP Developer/Senior PHP Developer/Team lead</h3>
+            <!-- /wp:heading -->
+
+            <!-- wp:paragraph {"className":"timeline-company"} -->
+            <p class="timeline-company">Realmdigital, ZaPOP, Prezence, Crystal River</p>
+            <!-- /wp:paragraph -->
+
+            <!-- wp:paragraph {"className":"timeline-desc"} -->
+            <p class="timeline-desc">Experience across various PHP application stacks, including Laravel, Yii, CodeIgniter, CakePHP, WordPress, Drupal, Joomla, and Moodle.</p>
+            <!-- /wp:paragraph -->
+        </div>
+        <!-- /wp:group -->
     </div>
     <!-- /wp:group -->
   </div>

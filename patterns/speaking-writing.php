@@ -33,6 +33,7 @@
         <!-- wp:html -->
         <div class="tag-list">
           <span class="tag">WordCamp Europe '19 '23</span>
+          <span class="tag">WordCamp US '25</span>
           <span class="tag">WordCamp Cape Town '16 '18 '19 '24</span>
           <span class="tag">WordCamp Johannesburg '18 '19</span>
           <span class="tag">PHP South Africa '17</span>
@@ -52,24 +53,25 @@
         <!-- wp:list {"className":"writing-list"} -->
         <ul class="writing-list">
           <!-- wp:list-item -->
-          <li><a href="https://wordpress.com/go/">WordPress.com Go Blog</a></li>
+            <li><a href="https://wordpress.com/blog/author/jbossenger/">WordPress.com Blog</a></li>
           <!-- /wp:list-item -->
 
           <!-- wp:list-item -->
-          <li><a href="https://jetpack.com/">Jetpack Blog</a></li>
+            <li><a href="https://developer.wordpress.org/news/">WordPress Developer Blog</a></li>
           <!-- /wp:list-item -->
 
           <!-- wp:list-item -->
-          <li><a href="https://www.smashingmagazine.com/">Smashing Magazine</a></li>
+            <li><a href="https://jetpack.com/resources/">Jetpack Blog</a></li>
           <!-- /wp:list-item -->
 
           <!-- wp:list-item -->
-          <li><a href="https://wptavern.com/">WP Tavern</a></li>
+            <li><a href="https://wptavern.com/">WP Tavern</a></li>
           <!-- /wp:list-item -->
 
-          <!-- wp:list-item -->
-          <li><a href="/guest-posts/">View all guest posts →</a></li>
-          <!-- /wp:list-item -->
+            <!-- wp:list-item -->
+            <li><a href="https://www.smashingmagazine.com/">Smashing Magazine</a></li>
+            <!-- /wp:list-item -->
+
         </ul>
         <!-- /wp:list -->
       </div>
