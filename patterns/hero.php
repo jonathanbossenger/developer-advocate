@@ -6,18 +6,28 @@
  * Description: Full-height hero with headline, description, social links, and profile photo.
  */
 ?>
-<!-- wp:html -->
-<section class="hero" id="home">
-  <div class="hero-inner">
-    <div class="hero-content">
+<!-- wp:group {"className":"hero","tagName":"section","layout":{"type":"default"}} -->
+<section class="wp-block-group hero" id="home">
+  <!-- wp:group {"className":"hero-inner","layout":{"type":"default"}} -->
+  <div class="wp-block-group hero-inner">
+    <!-- wp:group {"className":"hero-content","layout":{"type":"default"}} -->
+    <div class="wp-block-group hero-content">
+      <!-- wp:html -->
       <div class="hero-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         Developer Advocate &middot; Automattic
       </div>
-      <h1>Building for <em>developers</em>, teaching by <em>example.</em></h1>
-      <p class="hero-description">
-        I'm Jonathan — a developer advocate, educator, and open-source enthusiast from Cape Town, South Africa. I create educational content for WordPress developers and write about software, AI, and life.
-      </p>
+      <!-- /wp:html -->
+
+      <!-- wp:heading {"level":1} -->
+      <h1 class="wp-block-heading">Building for <em>developers</em>, teaching by <em>example.</em></h1>
+      <!-- /wp:heading -->
+
+      <!-- wp:paragraph {"className":"hero-description"} -->
+      <p class="hero-description">I'm Jonathan — a developer advocate, educator, and open-source enthusiast from Cape Town, South Africa. I create educational content for WordPress developers and write about software, AI, and life.</p>
+      <!-- /wp:paragraph -->
+
+      <!-- wp:html -->
       <div class="hero-links">
         <a href="/about/" class="primary-link">
           About Me
@@ -40,10 +50,15 @@
           LinkedIn
         </a>
       </div>
+      <!-- /wp:html -->
     </div>
-    <div class="hero-photo">
+    <!-- /wp:group -->
+
+    <!-- wp:group {"className":"hero-photo","layout":{"type":"default"}} -->
+    <div class="wp-block-group hero-photo">
+      <!-- wp:html -->
       <div class="hero-photo-frame">
-        <img src="https://jonathanbossenger.com/wp-content/uploads/2024/09/2024-09-06-08.51.24-scaled.jpg" alt="Jonathan Bossenger" loading="eager">
+        <img src="https://jonathanbossenger.com/wp-content/uploads/2023/06/NIL00118-1-2048x1368.jpg" alt="Jonathan Bossenger" loading="eager">
         <div class="hero-photo-meta">
           <span class="location">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -51,7 +66,10 @@
           </span>
         </div>
       </div>
+      <!-- /wp:html -->
     </div>
+    <!-- /wp:group -->
   </div>
+  <!-- /wp:group -->
 </section>
-<!-- /wp:html -->
+<!-- /wp:group -->

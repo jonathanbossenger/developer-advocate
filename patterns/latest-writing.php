@@ -12,9 +12,10 @@
   <div class="wp-block-group section-inner">
     <!-- wp:group {"className":"section-header","layout":{"type":"default"}} -->
     <div class="wp-block-group section-header">
-      <!-- wp:html -->
-      <div class="section-label">Latest Writing</div>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"section-label"} -->
+      <p class="section-label">Latest Writing</p>
+      <!-- /wp:paragraph -->
+
       <!-- wp:heading {"className":"section-title"} -->
       <h2 class="wp-block-heading section-title">From the blog</h2>
       <!-- /wp:heading -->
@@ -38,12 +39,9 @@
 
     <!-- wp:group {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"2.5rem"}}}} -->
     <div class="wp-block-group" style="margin-top:2.5rem">
-      <!-- wp:html -->
-      <a href="/post-archive/" class="view-all-link">
-        View all posts
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <!-- /wp:html -->
+      <!-- wp:paragraph {"className":"view-all-link-wrapper"} -->
+      <p class="view-all-link-wrapper"><a href="/post-archive/" class="view-all-link">View all posts →</a></p>
+      <!-- /wp:paragraph -->
     </div>
     <!-- /wp:group -->
   </div>
