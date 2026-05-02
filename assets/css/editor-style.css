@@ -6,6 +6,8 @@
 	--font-mono: 'JetBrains Mono', monospace;
 	--accent: #7B6AE0;
 	--text-muted: #6B6D74;
+	--selection-bg: var(--accent);
+	--selection-text: #FFFFFF;
 }
 
 .editor-styles-wrapper {
