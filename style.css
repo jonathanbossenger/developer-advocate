@@ -202,9 +202,7 @@ a, .role-card, .hero-links a, .highlight-card, .tag, .newsletter-btn .wp-element
 .site-nav .wp-block-navigation__responsive-container.is-menu-open {
   position: fixed;
   inset: 0;
-  width: 100vw;
   height: 100dvh;
-  min-height: 100dvh;
   z-index: 999;
   background-color: var(--bg);
   color: var(--text);
