@@ -7,14 +7,14 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"palette": [
-				{ "slug": "base", "color": "#FAFAF7", "name": "Base" },
+				{ "slug": "base", "color": "#F6F8FC", "name": "Base" },
 				{ "slug": "contrast", "color": "#1A1A1A", "name": "Contrast" },
 				{ "slug": "accent", "color": "#7B6AE0", "name": "Accent" },
 				{ "slug": "accent-hover", "color": "#6A57D1", "name": "Accent Hover" },
-				{ "slug": "secondary", "color": "#E8A838", "name": "Secondary" },
+				{ "slug": "secondary", "color": "#4F9DFF", "name": "Secondary" },
 				{ "slug": "muted", "color": "#6B6D74", "name": "Muted" },
 				{ "slug": "elevated", "color": "#FFFFFF", "name": "Elevated" },
-				{ "slug": "card", "color": "#F4F3EF", "name": "Card" }
+				{ "slug": "card", "color": "#EEF3FA", "name": "Card" }
 			]
 		},
 		"layout": {
